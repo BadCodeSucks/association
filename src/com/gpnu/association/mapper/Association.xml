@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.gpnu.association.mapper.AssociationMapper">
+	<insert id="add" parameterType="Association">
+		insert into association (name, brief_introduction, state)
+		values (#{name}, #{briefIntroduction}, #{state})
+	</insert>
+	
+	<delete id="delete" parameterType="Association">
+		delete from association where association_id = #{id}
+	</delete>
+	
+	<select id="get" parameterType="_int" resultType="Association">
+		select * from association where association_id = #{id}
+	</select>
+	
+	<update id="update" parameterType="Association">
+		update user set name=#{name}, brief_introduction=#{briefIntroduction}, state=#{state} where association_id=#{id}
+	</update>
+	
+	<select id="list" resultType="Association">
+		select * from association
+	</select>
+	
+</mapper>

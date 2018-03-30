@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.gpnu.association.mapper.MaterielMapper">
+	<insert id="add" parameterType="Materiel">
+		insert into materiel (id, title, content, association_id, user_id, create_time, begin_time, end_time, state)
+		values (#{id}, #{title}, #{content}, #{association_id}, #{user_id},  #{create_time}, #{begin_time}, #{end_time}, #{state})
+	</insert>
+	
+	<delete id="delete" parameterType="Materiel">
+		delete from materiel where user_id = #{user_id}
+	</delete>
+	
+	<select id="get" parameterType="_int" resultType="Materiel">
+		select * from materiel where user_id = #{user_id}
+	</select>
+	
+	<update id="update" parameterType="Materiel">
+		update materiel set title=#{title}, content=#{content}, begin_time=#{begin_time}, end_time=#{end_time}, state=#{state}
+		 where id=#{id}
+	</update>
+	
+	<select id="list" resultType="Materiel">
+		select * from materiel
+	</select>
+	
+</mapper>
